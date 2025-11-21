@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JavaScript Code Example</title>
+<style>
+body { font-family: monospace; padding: 20px; background: #1e1e1e; color: #d4d4d4; }
+pre { background: #2d2d2d; padding: 15px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<h1>JavaScript/Node.js Code Sample</h1>
+<pre><code>
+// Express.js API Server
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+// RESTful API endpoints
+app.get('/api/users', async (req, res) => {
+  const users = await db.collection('users').find().toArray();
+  res.json(users);
+});
+
+app.post('/api/users', async (req, res) => {
+  const newUser = await db.collection('users').insertOne(req.body);
+  res.status(201).json(newUser);
+});
+
+// React Component Example
+function UserProfile({ user }) {
+  const [isEditing, setIsEditing] = useState(false);
+  
+  return (
+    &lt;div className="profile"&gt;
+      &lt;h2&gt;{user.name}&lt;/h2&gt;
+      &lt;button onClick={() => setIsEditing(!isEditing)}&gt;
+        {isEditing ? 'Save' : 'Edit'}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+</code></pre>
+</body>
+</html>
